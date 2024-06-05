@@ -1,0 +1,27 @@
+.wrapper{
+    @apply flex flex-col;
+    .label{
+        @apply font-medium text-[13px] mb-[5px] text-grey;
+    }
+    .input_wrapper{
+        @apply flex relative;
+        .input{
+            @apply  w-full font-normal text-[16px] py-[7px] outline-none border-b-2 text-grey border-b-grey placeholder:text-grey
+                    bg-no-repeat bg-left p-[30px];   
+                    &:focus{
+                        @apply border-b-second text-second;
+                        + .svg{
+                            @apply fill-second;
+                        }
+                    }     
+        }
+    
+        .svg {
+            @apply absolute top-1/2 -translate-y-1/2 fill-grey;
+            :first-child{
+                @apply fill-inherit;
+            }
+        }
+    }
+
+}

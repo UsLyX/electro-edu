@@ -1,4 +1,4 @@
-import Registration from "../pages/login/registration/Registration.jsx";
+import Registration from "../pages/login/registration/Registration";
 
 export const list = [
     {
