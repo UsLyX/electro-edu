@@ -1,0 +1,66 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Student {
+  id           Int        @id @default(autoincrement())
+  lastName     String
+  firstName    String
+  email        String     @unique
+  password     String
+  class        Class      @relation(fields: [classId], references: [id])
+  middleName   String?
+  phone        String?    @unique
+  dateOfBirth  DateTime?
+  dateRegister DateTime   @default(now())
+  classId      Int
+  status       userStatus @default(PROCESSING)
+}
+
+model Teacher {
+  id           Int        @id @default(autoincrement())
+  lastName     String
+  firstName    String
+  email        String     @unique
+  password     String
+  predmets     Lesson[]
+  middleName   String?
+  phone        String?    @unique
+  dateOfBirth  DateTime
+  dateRegister DateTime   @default(now())
+  status       userStatus @default(PROCESSING)
+}
+
+model Admin {
+  id       Int    @id @default(autoincrement())
+  name     String
+  email    String @unique
+  password String
+}
+
+model Lesson {
+  id         Int     @id @default(autoincrement())
+  lessonName String  @unique
+  Teacher    Teacher @relation(fields: [teacherId], references: [id])
+  teacherId  Int
+  Class      Class   @relation(fields: [classId], references: [id])
+  classId    Int
+}
+
+model Class {
+  id        Int       @id @default(autoincrement())
+  className String    @unique
+  lessons   Lesson[]
+  Student   Student[]
+}
+
+enum userStatus {
+  ACCEPTED
+  REJECTED
+  PROCESSING
+}

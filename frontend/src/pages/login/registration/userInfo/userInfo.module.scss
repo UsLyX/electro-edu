@@ -1,0 +1,91 @@
+.wrapper{
+    @apply py-[20px] pl-[50px] pr-[20px] w-[100%] flex;
+    .register{
+        @apply w-[50%];
+        .logo{
+            @apply font-semibold text-[20px];
+        }
+        .form{
+            @apply mt-[70px] ml-[70px] w-[70%];
+            .h1{
+                @apply font-semibold text-[30px] mb-[30px];
+            }
+            .input{
+                @apply mb-[30px];
+            }
+            .select__wrapper{
+                @apply mb-[30px];
+                .label{
+                    @apply font-medium text-[13px] mb-[5px] text-grey;
+                }
+                .select > div{
+                    @apply border-b-2 border-0 rounded-none shadow-none border-grey focus-within:border-second;
+                    span{
+                        @apply hidden;
+                    }
+                }
+                .select > div:first-of-type > div:first-child > div{
+                    @apply text-grey;
+                }
+                .select > div:first-of-type:focus-within > div:first-child > div{
+                    @apply text-second;
+                }
+                .select > div:first-of-type > div:last-child > div{
+                    @apply text-grey;
+                }
+                .select > div:first-of-type:focus-within > div:last-child > div{
+                    @apply text-second;
+                }
+            }
+            .role__box{
+                @apply flex flex-col items-center mb-[30px];
+                .btn__role{
+                    @apply first:mb-[30px] font-semibold text-[14px] w-[40%] flex flex-col justify-center 
+                           items-center h-[150px] border-2 border-[#C5CFD3] rounded-main;
+                    .role__img{
+                        @apply mb-[20px];
+                    }
+                }
+                .active{
+                    @apply border-main;
+                }
+            }
+            .button{
+                @apply mb-[25px] drop-shadow-none hover:drop-shadow-main duration-300;
+            }
+            .button__back{
+                @apply flex justify-center items-center bg-lgrey text-grey drop-shadow-none;
+                .back__arrow{
+                    @apply mr-[10px];
+                }
+            }
+        }
+    }
+    .banner{
+        @apply w-[50%] flex flex-col justify-between bg-main rounded-[15px] px-[25px] pt-[25px] pb-[50px];
+        .phone__box{
+            @apply w-full flex justify-end items-center;
+            *:first-child{
+                @apply mr-[4px];
+            }
+            .phone{
+                @apply text-[15px] text-white;
+            }
+        }
+        .banner__main{
+            @apply flex flex-col mx-[100px];
+            .banner__img{
+                @apply mx-auto w-[85%] mb-[85px];
+            }
+            .banner__text{
+                @apply text-white;
+                .banner__title{
+                    @apply font-semibold text-[40px];
+                }
+                .banner__description{
+                    @apply font-light text-[20px];
+                }
+            }
+        }
+    }
+}
