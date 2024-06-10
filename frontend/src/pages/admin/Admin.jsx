@@ -1,10 +1,22 @@
 import style from './admin.module.scss'
 import { Link, Outlet } from 'react-router-dom'
+import { AuthContext } from '../../context/authContext'
+import { toast } from 'react-toastify'
+import { useContext } from 'react'
 
 import userPhoto from '../../assets/userPhoto.png'
 import { ReactComponent as ExitIcon} from '../../assets/exit.svg'
 
 const Admin = () => {
+
+  
+  const { exit } = useContext(AuthContext)
+
+  const exitFunc = () => {
+    exit();
+    toast.success("Вы вышли из аккаунта")
+  }
+
   return (
     <div className={style.wrapper}>
       <div className={style.navbar}>
@@ -20,7 +32,7 @@ const Admin = () => {
                     <Link to="/admin/predmets" className={style.link}>Администррирование предметов</Link>
                 </nav>
             </div> 
-            <Link className={style.exit}><ExitIcon /> Выйти</Link>
+            <Link to="/authorization" onClick={exitFunc} className={style.exit}><ExitIcon /> Выйти</Link>
         </div>
       </div>
       <div style={{flex: 1, marginLeft: '285px'}}>

@@ -7,6 +7,9 @@ import AdminStatement from '../pages/admin/statement/AdminStatement';
 import Teacher from '../pages/teacher/Teacher';
 import Student from '../pages/student/Student';
 import PersonalAccount from '../pages/student/PersonalAccount/PersonalAccount';
+import MyClass from '../pages/student/myClass/MyClass';
+import Teachers from '../pages/student/teachers/Teachers';
+import NotFound from '../pages/NotFound';
 
 export const list = [
     {
@@ -35,7 +38,7 @@ export const list = [
         isAuth: true,
         childs: [
             {
-                path: '/admin/statements',
+                path: 'statements',
                 component: <AdminStatement />,
                 isAuth: true,
             }
@@ -47,8 +50,18 @@ export const list = [
         isAuth: true,
         childs: [
             {
-                path: '/student/personalAccount',
+                path: 'personalAccount',
                 component: <PersonalAccount />,
+                isAuth: true,
+            },
+            {
+                path: 'class',
+                component: <MyClass />,
+                isAuth: true,
+            },
+            {
+                path: 'teachers',
+                component: <Teachers />,
                 isAuth: true,
             }
         ]
@@ -57,5 +70,10 @@ export const list = [
         path: '/teacher',
         component: <Teacher />,
         isAuth: true,
+    },
+    {
+        path: '/notFound',
+        component: <NotFound />,
+        notFound: true
     }
 ]

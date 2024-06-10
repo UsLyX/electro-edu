@@ -1,0 +1,32 @@
+.wrapper{
+    @apply px-[100px] py-[70px];
+    .title{
+        @apply font-mon font-semibold text-[30px] text-second mb-[15px];
+    }
+    .count__teachers{
+        @apply font-mon font-semibold text-[20px] text-grey mb-[50px];
+    }
+    .teachers__container{
+        @apply font-rubik;
+        .category{
+            @apply px-[20px] flex justify-between text-main font-medium mb-[15px];
+        }
+        .teachers{
+            .teacher{
+                @apply mb-[20px] border-[1px] border-second rounded-main flex py-[8px] px-[20px] items-center justify-between;
+                .main__info{
+                    @apply flex items-center;
+                    img{
+                        @apply w-[64px] h-[64px] mr-[40px];
+                    }
+                    span{
+                        @apply font-medium text-[20px] text-second;
+                    }
+                }
+                .role{
+                    @apply text-second;
+                }
+            }
+        }
+    }
+}

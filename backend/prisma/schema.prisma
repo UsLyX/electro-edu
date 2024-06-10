@@ -48,16 +48,24 @@ model TeacherLesson {
 model Lesson {
   id            Int             @id @default(autoincrement())
   lessonName    String          @unique
-  Class         Class?          @relation(fields: [classId], references: [id])
-  classId       Int?
   TeacherLesson TeacherLesson[]
+  ClassLessons  ClassLessons[]
 }
 
 model Class {
-  id        Int       @id @default(autoincrement())
-  className String    @unique
-  lessons   Lesson[]
-  Student   Student[]
+  id           Int            @id @default(autoincrement())
+  className    String         @unique
+  Student      Student[]
+  ClassLessons ClassLessons[]
+}
+
+model ClassLessons {
+  class      Class  @relation(fields: [classId], references: [id])
+  classId    Int
+  lesson     Lesson @relation(fields: [lessonName], references: [lessonName])
+  lessonName String
+
+  @@id([classId, lessonName])
 }
 
 model Admin {

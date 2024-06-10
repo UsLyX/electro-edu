@@ -42,7 +42,6 @@ const AdminStatement = () => {
   const getStatements = async () => {
     await axios.get(`${process.env.REACT_APP_API_URL}/admin/statements`)
     .then(res => {
-      console.log(res)
       setStatements(res.data.statements)
       setTeachPredmets(res.data.teachPredmets)
     })

@@ -15,6 +15,9 @@
                         }
                     }     
         }
+        .input__mask{
+            outline: none !important;
+        }
     
         .svg {
             @apply absolute top-1/2 -translate-y-1/2 fill-grey;

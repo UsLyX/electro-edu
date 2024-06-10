@@ -18,7 +18,7 @@ import banner1 from "../../../assets/banner1.png";
 const Authorization = () => {
   const navigate = useNavigate();
 
-  const { user, setUser } = useContext(AuthContext)
+  const { user, setUser, login } = useContext(AuthContext)
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -28,7 +28,6 @@ const Authorization = () => {
     const data = {email, password}
     await axios.post(`${process.env.REACT_APP_API_URL}/user/login`, data)
     .then(res => {
-      console.log(res)
       localStorage.setItem('token', res.data.token)
       toast.success(res.data.message)
       switch (res.data.role) {
@@ -45,6 +44,7 @@ const Authorization = () => {
           navigate('/student')
           break;    
       }
+      login(res.data.token)
     })
     .catch(res => toast.error(res.response.data.message))
   }
