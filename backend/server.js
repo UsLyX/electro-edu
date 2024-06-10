@@ -2,6 +2,7 @@ const express = require('express')
 const cors = require('cors')
 
 const userRouter = require('./routers/userRouter')
+const adminRouter = require('./routers/adminRouter')
 
 const app = express()
 
@@ -11,6 +12,7 @@ app.use(cors())
 app.use(express.json())
 
 app.use('/user', userRouter)
+app.use('/admin', adminRouter)
 
 const start = () => {
     try {

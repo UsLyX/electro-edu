@@ -12,6 +12,10 @@ module.exports = {
       borderRadius: {
         main: "4px",
       },
+      fontFamily: {
+        mon: ['Montserrat', 'sans-serif'],
+        rubik: ['Rubik', 'sans-serif'],
+      },
       dropShadow: {
         main: "0 4px 26px rgba(0, 0, 0, 0.25)",
       },

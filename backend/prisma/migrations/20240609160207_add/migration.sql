@@ -1,15 +1,19 @@
+-- CreateEnum
+CREATE TYPE "userStatus" AS ENUM ('ACCEPTED', 'REJECTED', 'PROCESSING');
+
 -- CreateTable
 CREATE TABLE "Student" (
     "id" SERIAL NOT NULL,
     "lastName" TEXT NOT NULL,
-    "firsttName" TEXT NOT NULL,
+    "firstName" TEXT NOT NULL,
     "email" TEXT NOT NULL,
     "password" TEXT NOT NULL,
     "middleName" TEXT,
     "phone" TEXT,
-    "dateOfBirth" TIMESTAMP(3) NOT NULL,
+    "dateOfBirth" TIMESTAMP(3),
     "dateRegister" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "classId" INTEGER NOT NULL,
+    "status" "userStatus" NOT NULL DEFAULT 'PROCESSING',
 
     CONSTRAINT "Student_pkey" PRIMARY KEY ("id")
 );
@@ -18,13 +22,14 @@ CREATE TABLE "Student" (
 CREATE TABLE "Teacher" (
     "id" SERIAL NOT NULL,
     "lastName" TEXT NOT NULL,
-    "firsttName" TEXT NOT NULL,
+    "firstName" TEXT NOT NULL,
     "email" TEXT NOT NULL,
     "password" TEXT NOT NULL,
     "middleName" TEXT,
     "phone" TEXT,
-    "dateOfBirth" TIMESTAMP(3) NOT NULL,
+    "dateOfBirth" TIMESTAMP(3),
     "dateRegister" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "status" "userStatus" NOT NULL DEFAULT 'PROCESSING',
 
     CONSTRAINT "Teacher_pkey" PRIMARY KEY ("id")
 );
@@ -43,8 +48,8 @@ CREATE TABLE "Admin" (
 CREATE TABLE "Lesson" (
     "id" SERIAL NOT NULL,
     "lessonName" TEXT NOT NULL,
-    "teacherId" INTEGER NOT NULL,
-    "classId" INTEGER NOT NULL,
+    "teacherId" INTEGER,
+    "classId" INTEGER,
 
     CONSTRAINT "Lesson_pkey" PRIMARY KEY ("id")
 );
@@ -82,7 +87,7 @@ CREATE UNIQUE INDEX "Class_className_key" ON "Class"("className");
 ALTER TABLE "Student" ADD CONSTRAINT "Student_classId_fkey" FOREIGN KEY ("classId") REFERENCES "Class"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Lesson" ADD CONSTRAINT "Lesson_teacherId_fkey" FOREIGN KEY ("teacherId") REFERENCES "Teacher"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "Lesson" ADD CONSTRAINT "Lesson_teacherId_fkey" FOREIGN KEY ("teacherId") REFERENCES "Teacher"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Lesson" ADD CONSTRAINT "Lesson_classId_fkey" FOREIGN KEY ("classId") REFERENCES "Class"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "Lesson" ADD CONSTRAINT "Lesson_classId_fkey" FOREIGN KEY ("classId") REFERENCES "Class"("id") ON DELETE SET NULL ON UPDATE CASCADE;

@@ -1,0 +1,36 @@
+.wrapper{
+    @apply px-[100px] py-[70px];
+    .title{
+        @apply font-mon font-semibold text-[30px] text-second mb-[60px];
+    }
+    .category{
+        @apply flex px-[20px] font-rubik font-medium text-main mb-[10px];
+        p:first-child{
+            @apply w-[30%];
+        }
+    }
+    .statements__container{
+        @apply font-rubik;
+        .statement{
+            @apply mb-[20px] flex items-center py-[28px] px-[20px] border-[1px] border-main bg-white rounded-main duration-300 hover:drop-shadow-main;
+            .name{
+                @apply w-[30%] font-medium text-[20px] text-second;
+            }
+            .role{
+                @apply w-[35%];
+            }
+            .btn__box{
+                @apply flex-1 flex justify-center;
+                .button{
+                    @apply first:mr-[20px] first:hover:bg-main hover:text-white last:hover:bg-[#FF0000] text-grey bg-lgrey rounded-main px-[30px] py-[6px] duration-300;
+                }
+                .accept{
+                    @apply w-full bg-main text-white rounded-main px-[30px] py-[6px];
+                }
+                .reject{
+                    @apply w-full bg-[#FF0000] text-white rounded-main px-[30px] py-[6px];
+                }
+            }
+        }
+    }
+}

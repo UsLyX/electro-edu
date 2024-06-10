@@ -1,0 +1,42 @@
+.wrapper{
+    @apply flex;
+    .navbar{
+        @apply fixed left-0 border-r-2 max-h-screen h-screen w-[285px] border-[#C5CFD3] flex flex-col;
+        *{
+            @apply font-rubik;
+        }
+        .logo{
+            @apply font-mon text-main font-bold text-[20px] w-full text-center py-[20px] border-b-2 border-[#C5CFD3];
+        }
+        .nav__wrapper{
+            @apply flex flex-col items-center justify-between flex-1 pt-[30px] pb-[40px];
+            .nav__box{
+                @apply flex flex-col items-center;
+                .user_nav__info{
+                    @apply flex flex-col items-center mb-[40px];
+                    img{
+                        @apply mb-[30px];
+                    }
+                    p{
+                        @apply text-[20px] font-medium;
+                    }
+                }
+                .nav{
+                    @apply flex flex-col text-[20px] items-center text-center;
+                    .link{
+                        @apply mb-[35px] last:mb-0 hover:text-main;
+                    }
+                    .active{
+                        @apply font-medium text-main;
+                    }
+                }
+            }
+            .exit{
+                @apply flex items-center text-[20px] fill-black duration-200 hover:text-[#FF0000] hover:fill-[#FF0000];
+                *:first-child{
+                    @apply mr-[10px] fill-inherit;
+                }
+            }
+        }
+    }
+}

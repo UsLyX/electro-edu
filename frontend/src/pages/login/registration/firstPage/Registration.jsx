@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from "react";
+import React, { useContext, useState } from "react";
 import style from "./registration.module.scss";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -28,6 +28,7 @@ const Registration = () => {
         <form onSubmit={submit} className={style.form}>
           <h1 className={style.h1}>Регистрация</h1>
           <Input
+            min="10"
             type="email"
             label="Эл. почта"
             placeholder="Введите свой Emal адрес"

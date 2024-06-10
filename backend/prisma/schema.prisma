@@ -23,33 +23,34 @@ model Student {
 }
 
 model Teacher {
-  id           Int        @id @default(autoincrement())
+  id           Int             @id @default(autoincrement())
   lastName     String
   firstName    String
-  email        String     @unique
+  email        String          @unique
   password     String
-  predmets     Lesson[]
+  predmets     TeacherLesson[]
   middleName   String?
-  phone        String?    @unique
-  dateOfBirth  DateTime
-  dateRegister DateTime   @default(now())
-  status       userStatus @default(PROCESSING)
+  phone        String?         @unique
+  dateOfBirth  DateTime?
+  dateRegister DateTime        @default(now())
+  status       userStatus      @default(PROCESSING)
 }
 
-model Admin {
-  id       Int    @id @default(autoincrement())
-  name     String
-  email    String @unique
-  password String
+model TeacherLesson {
+  lesson     Lesson  @relation(fields: [lessonName], references: [lessonName])
+  lessonName String
+  teacher    Teacher @relation(fields: [teacherID], references: [id])
+  teacherID  Int
+
+  @@id([lessonName, teacherID])
 }
 
 model Lesson {
-  id         Int     @id @default(autoincrement())
-  lessonName String  @unique
-  Teacher    Teacher @relation(fields: [teacherId], references: [id])
-  teacherId  Int
-  Class      Class   @relation(fields: [classId], references: [id])
-  classId    Int
+  id            Int             @id @default(autoincrement())
+  lessonName    String          @unique
+  Class         Class?          @relation(fields: [classId], references: [id])
+  classId       Int?
+  TeacherLesson TeacherLesson[]
 }
 
 model Class {
@@ -57,6 +58,13 @@ model Class {
   className String    @unique
   lessons   Lesson[]
   Student   Student[]
+}
+
+model Admin {
+  id       Int    @id @default(autoincrement())
+  name     String
+  email    String @unique
+  password String
 }
 
 enum userStatus {

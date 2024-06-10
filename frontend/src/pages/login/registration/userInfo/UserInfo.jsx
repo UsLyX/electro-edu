@@ -4,18 +4,18 @@ import style from "./userInfo.module.scss";
 import Select from "react-select";
 import makeAnimated from 'react-select/animated'
 import axios from 'axios'
+import { toast } from "react-toastify";
 
 import ButtonFullsize from "../../../../elements/buttonFullsize/ButtonFullsize";
 import Input from "../../../../elements/input/Input";
+import { AuthContext } from "../../../../context/authContext";
 
 import { ReactComponent as Mail } from "../../../../assets/mail.svg";
 import { ReactComponent as UserIcon } from "../../../../assets/userIcon.svg";
-import { ReactComponent as BookIcon } from "../../../../assets/bookIcon.svg";
 import { ReactComponent as PassIcon } from "../../../../assets/passIcon.svg";
 import { ReactComponent as BackArrow } from "../../../../assets/back.svg";
 import { ReactComponent as Phone } from "../../../../assets/phone.svg";
 import banner3 from "../../../../assets/banner3.png";
-import { AuthContext } from "../../../../context/authContext";
 
 const animatedComponents = makeAnimated();
 
@@ -95,8 +95,12 @@ const UserInfo = () => {
         teachPredmets: teachPredmets,
         password: password
       }
-      await axios.post(`http://localhost:5000/user/registration`, data)
-      .then(res => console.log(res))
+      await axios.post(`${process.env.REACT_APP_API_URL}/user/registration`, data)
+      .then(res => {
+        toast.success(res.data.message)
+        navigate('/authorization')
+      })
+      .catch(res => toast.error(res.response.data.message))
     }
   };
 
@@ -113,6 +117,7 @@ const UserInfo = () => {
         <form onSubmit={submit} className={style.form}>
           <h1 className={style.h1}>Личные данные</h1>
           <Input
+            min='10'
             type="email"
             value={user.email}
             onChange={changeMail}
@@ -149,6 +154,7 @@ const UserInfo = () => {
             </div> 
           )}
           <Input
+            min='6'
             onChange={changePassword}
             type="password"
             placeholder="Придумайте пароль"
@@ -157,6 +163,7 @@ const UserInfo = () => {
             className={style.input}
           />
           <Input
+            min='6'
             onChange={changeConfirm}
             type="password"
             placeholder="Повторите пароль"
