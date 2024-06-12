@@ -1,0 +1,12 @@
+.wrapper{
+    @apply px-[100px] py-[70px];
+    .title{
+        @apply font-mon font-semibold text-[30px] text-second mb-[50px];
+    }
+    .classes{
+        @apply flex flex-wrap;
+        .button{
+           flex: 1 0 21%;
+        }
+    }
+}    

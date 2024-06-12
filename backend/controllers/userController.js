@@ -25,7 +25,8 @@ class userController{
             }
             else if(req.user.role == 'Учитель'){
                 const teacher = await prisma.teacher.findUnique({
-                    where: { id: req.user.id }
+                    where: { id: req.user.id },
+                    include: { predmets: true }
                 })
                 const token = generateAccessToken(req.user.id, req.user.role);
                 return res.status(200).json({token, teacher, role: req.user.role})
@@ -185,11 +186,11 @@ class userController{
                     break;
                 case "Учитель":
                     const teacher = await prisma.teacher.update({
-                        where:{id: user.id},
+                        where:{id: user.user.id},
                         data: {
-                            middleName: user.middleName,
-                            phone: user.phone,
-                            dateOfBirth: new Date(user.dateOfBirth)
+                            middleName: user.change.middleName && user.change.middleName,
+                            phone: user.change.phone && user.change.phone,
+                            dateOfBirth: user.change.dateOfBirth && new Date(user.change.dateOfBirth) 
                         }
                     })
                     return res.status(200).json({message: "Изменения успешно сохранены", teacher})

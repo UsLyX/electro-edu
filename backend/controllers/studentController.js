@@ -16,6 +16,7 @@ class studentController {
             return res.status(500).json({message: `Ошибка сервера ${error}`}) 
         }
     }
+
     async getTeachers(req, res) {
         try {
             const teachers = await prisma.teacher.findMany({
@@ -27,6 +28,24 @@ class studentController {
                 }
             })
             return res.status(200).json(teachers)
+        } catch (error) {
+            console.log(error)
+            return res.status(500).json({message: `Ошибка сервера ${error}`}) 
+        }
+    }
+
+    async predmets(req, res) {
+        try {
+            const { classId } = req.body
+            const predmets = await prisma.class.findUnique({
+                where: {
+                    id: classId
+                },
+                include: {
+                    ClassLessons: true
+                }
+            })
+            return res.status(200).json(predmets)
         } catch (error) {
             console.log(error)
             return res.status(500).json({message: `Ошибка сервера ${error}`}) 

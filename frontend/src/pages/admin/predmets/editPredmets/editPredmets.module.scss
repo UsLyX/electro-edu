@@ -1,0 +1,110 @@
+.wrapper{
+    @apply px-[100px] py-[70px];
+    .title{
+        @apply font-mon font-semibold text-[30px] text-second mb-[15px];
+    }
+    .subtitle{
+        @apply font-mon font-semibold text-grey mb-[50px];
+    }
+    .button__container{
+        @apply flex mb-[30px];
+        .btn{
+            @apply drop-shadow-main bg-white text-second rounded-main py-[8px] px-[40px] duration-300 hover:text-white; 
+        }
+        .btn__add{
+            @apply mr-[35px] hover:bg-main;
+        }
+        .btn__remove{
+            @apply hover:bg-[#FF0000];
+        }
+    }
+    .category{
+        @apply text-main font-rubik font-medium mb-[10px];
+    }
+    .predmets{
+        .predmet{
+            @apply mb-[30px] bg-white drop-shadow-main border-[1px] border-main rounded-main p-[20px];
+            p{
+                @apply font-mon font-medium text-[20px];
+            }
+        }
+        .no__predmets{
+            @apply text-[20px] text-second font-semibold;
+        }
+    }
+}  
+.modal__add{
+    @apply hidden bg-black bg-[rgba(0,0,0,0.5)] absolute top-0 left-0 w-full h-screen;
+    .add{
+        @apply flex flex-col w-[430px] h-[450px] bg-white rounded-main px-[40px] py-[20px];
+        .add__title{
+            @apply text-center font-mon font-semibold text-[24px] mb-[20px];
+        }
+        .select__wrapper{
+            @apply mb-[30px] flex-1;
+            .label{
+                @apply font-medium text-[13px] mb-[5px] text-grey;
+            }
+            .select > div{
+                @apply border-b-2 border-0 rounded-none shadow-none border-grey focus-within:border-second;
+                span{
+                    @apply hidden;
+                }
+            }
+            .select > div:first-of-type > div:first-child > div{
+                @apply text-grey;
+            }
+            .select > div:first-of-type:focus-within > div:first-child > div{
+                @apply text-second;
+            }
+            .select > div:first-of-type > div:last-child > div{
+                @apply text-grey;
+            }
+            .select > div:first-of-type:focus-within > div:last-child > div{
+                @apply text-second;
+            }
+        }
+        .add__btn{
+            @apply justify-items-end bg-main text-white font-mon text-[17px] font-semibold w-full rounded-main py-[10px];
+        }
+    }
+}
+.modal__remove{
+    @apply hidden bg-black bg-[rgba(0,0,0,0.5)] absolute top-0 left-0 w-full h-screen;
+    .remove{
+        @apply flex flex-col w-[430px] h-[450px] bg-white rounded-main px-[40px] py-[20px];
+        .remove__title{
+            @apply text-center font-mon font-semibold text-[24px] mb-[20px];
+        }
+        .select__wrapper{
+            @apply mb-[30px] flex-1;
+            .label{
+                @apply font-medium text-[13px] mb-[5px] text-grey;
+            }
+            .select > div{
+                @apply border-b-2 border-0 rounded-none shadow-none border-grey focus-within:border-second;
+                span{
+                    @apply hidden;
+                }
+            }
+            .select > div:first-of-type > div:first-child > div{
+                @apply text-grey;
+            }
+            .select > div:first-of-type:focus-within > div:first-child > div{
+                @apply text-second;
+            }
+            .select > div:first-of-type > div:last-child > div{
+                @apply text-grey;
+            }
+            .select > div:first-of-type:focus-within > div:last-child > div{
+                @apply text-second;
+            }
+        }
+        .remove__btn{
+            @apply justify-items-end bg-main text-white font-mon text-[17px] font-semibold w-full rounded-main py-[10px];
+        }
+    }
+}
+.open{
+    @apply flex justify-center items-center ;
+}  

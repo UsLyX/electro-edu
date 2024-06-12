@@ -3,7 +3,7 @@ import InputMask from 'react-input-mask'
 import style from './input.module.scss'
 
 
-const Input = ({type, placeholder, label, svg, className, onChange, value, min, readOnly, defaultValue}) => {
+const Input = ({type, placeholder, label, svg, className, onChange, value, min, readOnly}) => {
   return( 
     <div className={`${style.wrapper} ${className}`}>
       {type == 'tel' ?

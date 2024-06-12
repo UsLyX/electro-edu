@@ -4,7 +4,6 @@ import "react-toastify/dist/ReactToastify.css";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import { list } from "./routersList";
 import { AuthContext } from "../context/authContext";
-import NotFound from "../pages/NotFound";
 
 const Routers = () => {
 
@@ -23,6 +22,11 @@ const Routers = () => {
                     <>
                       <Route index element={<Navigate to={route.childs[0].path} replace />} />
                       <Route path={route.childs[0].path} element={route.childs[0].component}/>
+                      <Route path={route.childs[1].path} element={route.childs[1].component} >
+                        <Route index element={<Navigate to={route.childs[1].childs[0].path} replace />} />
+                        <Route path={route.childs[1].childs[0].path} element={route.childs[1].childs[0].component}/>
+                        <Route path={route.childs[1].childs[1].path} element={route.childs[1].childs[1].component}/>
+                      </Route>
                     </>
                   )}
                   {route.path === '/student' && (
@@ -31,6 +35,18 @@ const Routers = () => {
                       <Route path={route.childs[0].path} element={route.childs[0].component}/>
                       <Route path={route.childs[1].path} element={route.childs[1].component}/>
                       <Route path={route.childs[2].path} element={route.childs[2].component}/>
+                      <Route path={route.childs[3].path} element={route.childs[3].component}/>
+                    </>
+                  )}
+                  {route.path === '/teacher' && (
+                    <>
+                      <Route index element={<Navigate to={route.childs[0].path} replace />} />
+                      <Route path={route.childs[0].path} element={route.childs[0].component}/>
+                      <Route path={route.childs[1].path} element={route.childs[1].component} >
+                        <Route index element={<Navigate to={route.childs[1].childs[0].path} replace />} />
+                        <Route path={route.childs[1].childs[0].path} element={route.childs[1].childs[0].component}/>
+                        <Route path={route.childs[1].childs[1].path} element={route.childs[1].childs[1].component}/>
+                      </Route>
                     </>
                   )}
                 </Route>

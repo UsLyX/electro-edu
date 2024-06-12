@@ -1,5 +1,5 @@
 import style from './student.module.scss'
-import { Link, Outlet, useNavigate } from 'react-router-dom'
+import { Link, Outlet, useLocation } from 'react-router-dom'
 import { AuthContext } from '../../context/authContext'
 import { toast } from 'react-toastify'
 import { useContext, useEffect, useState } from 'react'
@@ -9,7 +9,13 @@ import { ReactComponent as ExitIcon} from '../../assets/exit.svg'
 
 const Student = () => { 
 
-  const [url, setUrl] = useState(window.location.href.substring(window.location.href.lastIndexOf('/')))
+  const location = useLocation();
+
+  const [url, setUrl] = useState(window.location.href.split('/'))
+
+  useEffect(() => {
+    setUrl(window.location.href.split('/'))
+  }, [location])
 
   const { exit, user } = useContext(AuthContext)
 
@@ -29,11 +35,11 @@ const Student = () => {
                     <p>{user.lastName} {user.firstName}</p>
                 </div>
                 <nav className={style.nav}>
-                    <Link onClick={_ => setUrl('/personalAccount')} to="/student/personalAccount" className={`${style.link} ${url === '/personalAccount' && style.active}`}>Личный кабинет</Link>
-                    <Link onClick={_ => setUrl('/predmets')} to="/student/predmets" className={`${style.link} ${url === '/predmets' && style.active}`}>Мои предметы</Link>
-                    <Link onClick={_ => setUrl('/score')} to="/student/score" className={`${style.link} ${url === '/score' && style.active}`}>Мои оценки</Link>
-                    <Link onClick={_ => setUrl('/class')} to="/student/class" className={`${style.link} ${url === '/class' && style.active}`}>Мой класс</Link>
-                    <Link onClick={_ => setUrl('/teachers')} to="/student/teachers" className={`${style.link} ${url === '/teachers' && style.active}`}>Учителя</Link>
+                    <Link to="/student/personalAccount" className={`${style.link} ${url.includes('personalAccount') && style.active}`}>Личный кабинет</Link>
+                    <Link to="/student/predmets" className={`${style.link} ${url.includes('predmets') && style.active}`}>Мои предметы</Link>
+                    <Link to="/student/score" className={`${style.link} ${url.includes('score') && style.active}`}>Мои оценки</Link>
+                    <Link to="/student/class" className={`${style.link} ${url.includes('class') && style.active}`}>Мой класс</Link>
+                    <Link to="/student/teachers" className={`${style.link} ${url.includes('teachers') && style.active}`}>Учителя</Link>
                 </nav>
             </div> 
             <Link to="/authorization" onClick={exitFunc} className={style.exit}><ExitIcon /> Выйти</Link> 

@@ -1,0 +1,35 @@
+.wrapper{
+    @apply py-[70px] px-[100px];
+    .title{
+        @apply font-mon font-semibold text-[30px] text-second mb-[50px];
+    }
+    .category{
+        @apply font-rubik px-[35px] flex text-main font-medium mb-[15px];
+        p:first-child{
+            @apply w-[60%];
+        }
+        p:last-child{
+            @apply w-[20%] text-center;
+        }
+    }
+    .predmets{
+        .predmet{
+            @apply mb-[30px] font-rubik drop-shadow-main bg-white rounded-main border-[1px] border-main flex items-center px-[35px] py-[20px];
+            .predmet__name{
+                @apply font-mon text-[20px] font-medium w-[60%] text-second;
+            }
+            .predmet__score{
+                @apply w-[20%] text-center font-medium text-second;
+            }
+            .btn__container{
+                @apply flex-1 flex justify-center;
+                .questions__btn{
+                    @apply px-[30px] py-[7px] bg-main text-white rounded-main hover:drop-shadow-lg;
+                }   
+            }
+        }
+    }
+    .not__found{
+        @apply font-mon font-semibold text-[20px] text-second mb-[50px];
+    }
+}

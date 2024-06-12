@@ -28,7 +28,6 @@ const Teachers = () => {
   const findTeachers = async () => {
     await axios.get(`${process.env.REACT_APP_API_URL}/student/getTeachers`)
     .then(res => {
-      console.log(res.data)
       setTeachers(res.data)
     })
     .catch(e => console.log(e))

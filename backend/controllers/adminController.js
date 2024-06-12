@@ -77,6 +77,59 @@ class adminController {
       return res.status(500).json({ message: `Ошибка сервера ${error}` });
     }
   }
+
+  async predmets(req, res) {
+    try {
+      const predmets = await prisma.classLessons.findMany({
+        where: {
+          classId: Number(req.params.id)
+        }
+      })
+      return res.status(200).json(predmets)
+    } 
+    catch (error) {
+      console.log(error);
+      return res.status(500).json({ message: `Ошибка сервера ${error}` });
+    }
+  }
+
+  async addPredmets(req, res) {
+    try {
+      const predmets = req.body;
+
+      const schoolClass = await prisma.class.update({
+        where: { id: Number(req.params.id) },
+        data: {
+          ClassLessons: { create: predmets.map(item => ({lessonName: item})) }
+        } 
+      })
+
+      return res.status(200).json({message: 'Предметы добавлены', schoolClass})
+    } 
+    catch (error) {
+      console.log(error);
+      return res.status(500).json({ message: `Ошибка сервера ${error}` });
+    }
+  }
+
+  async deletePredmets(req, res) {
+    try {
+      const predmets = req.body;
+
+      const schoolClass = await prisma.class.update({
+        where: { id: Number(req.params.id)},
+        data: {
+          ClassLessons: {deleteMany: predmets.map(item => ({lessonName: item}))}
+        }
+      })
+
+      return res.status(200).json({message: 'Предметы удалены', schoolClass})
+    } 
+    catch (error) {
+      console.log(error);
+      return res.status(500).json({ message: `Ошибка сервера ${error}`});
+    }
+  }
 }
 
 module.exports = new adminController();

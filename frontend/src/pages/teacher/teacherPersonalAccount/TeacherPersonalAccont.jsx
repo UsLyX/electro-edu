@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import style from './personalAccount.module.scss'
+import style from './teacherPersonalAccount.module.scss'
 import { AuthContext } from '../../../context/authContext'
 import axios from 'axios'
 import { toast } from 'react-toastify'
@@ -12,8 +12,7 @@ import {ReactComponent as Phone}  from '../../../assets/phoneForInput.svg'
 import {ReactComponent as Calendar}  from '../../../assets/calendar.svg'
 import {ReactComponent as Book}  from '../../../assets/bookIcon.svg'
 
-const PersonalAccount = () => {
-
+const TeacherPersonalAccont = () => {
   const { user, setUser } = useContext(AuthContext)
 
   const [currentUser, setCurrentUser] = useState(user)
@@ -28,7 +27,7 @@ const PersonalAccount = () => {
       await axios.patch(`${process.env.REACT_APP_API_URL}/user/update`, data)
       .then(res => {
         setChange(null)
-        setCurrentUser(user)
+        setUser(currentUser)
         toast.success(res.data.message)
       })
       .catch(res => toast.error(res.response.data.message))
@@ -65,12 +64,12 @@ const PersonalAccount = () => {
           placeholder="Не указано"
           label="Отчество"
           onChange={e => {
-            setUser({...user, middleName: e.target.value})
+            setCurrentUser({...currentUser, middleName: e.target.value})
             setChange({...change, middleName: e.target.value})
           }}
           svg={<UserIcon />}
           className={style.input}
-          readOnly={currentUser.middleName ? true : false}
+          readOnly={user.middleName != null ? true : false}
         />
         <Input
           type="text"
@@ -86,7 +85,10 @@ const PersonalAccount = () => {
           type="tel"
           value={user.phone}
           label="Телефон"
-          onChange={e => setChange({...change, phone: e.target.value})}
+          onChange={e => {
+            setCurrentUser({...currentUser, phone: e.target.value})
+            setChange({...change, phone: e.target.value})
+          }}
           svg={<Phone />}
           className={style.input}
           readOnly={user.phone != null ? true : false}
@@ -105,21 +107,21 @@ const PersonalAccount = () => {
           value={user.dateOfBirth && user.dateOfBirth.slice(0, 10)}
           placeholder="Не указано"
           onChange={e => {
-            setUser({...user, dateOfBirth: e.target.value})
+            setCurrentUser({...currentUser, dateOfBirth: e.target.value})
             setChange({...change, dateOfBirth: e.target.value})
           }}
           label="Дата рождения"
           svg={<Calendar />}
           className={style.input}
-          readOnly={user.dateOfBirth ? true : false}
+          readOnly={user.dateOfBirth != null ? true : false}
         />
         <Input
           type="text"
-          value={user.classId && user.classId + ' Класс'}
+          value={user.predmets && user.predmets.map((item, index) => index != user.predmets.length - 1 ? `${item.lessonName}` : ` ${item.lessonName}`)}
           placeholder="Не указано"
-          label="Класс"
+          label="Предметы"
           svg={<Book />}
-          className={style.input}
+          className={`${style.input} ${style.maxLength}`}
           readOnly
         />
       </form>
@@ -129,4 +131,4 @@ const PersonalAccount = () => {
   )
 }
 
-export default PersonalAccount
+export default TeacherPersonalAccont

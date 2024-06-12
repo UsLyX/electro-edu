@@ -1,0 +1,21 @@
+.wrapper{
+    @apply py-[70px] px-[100px];
+    .title{
+        @apply font-mon font-semibold text-[30px] text-second mb-[50px];
+    }
+    .info__box{
+        @apply flex flex-wrap justify-between mb-[45px];
+        .input{
+            @apply w-[45%] mb-[45px];
+        }
+        .maxLength{
+            @apply w-full;
+        }
+    }
+    .dateReg{
+        @apply text-[#6E6E6E] font-mon font-medium text-[16px] mb-[50px];
+    }
+    .btn__submit{
+        @apply bg-main rounded-main text-white py-[14px] px-[115px] font-mon font-semibold;
+    }
+}

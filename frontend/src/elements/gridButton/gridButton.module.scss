@@ -1,0 +1,21 @@
+.btn{
+    @apply flex flex-col items-center justify-center bg-lgrey text-grey font-semibold mr-[20px] mb-[20px] h-[165px] rounded-main duration-300;
+    &:hover{
+        @apply bg-main text-white scale-105;
+        .wrapper span:first-child svg{
+            @apply fill-white;
+        }
+    }
+    p:first-child{
+        @apply text-[48px];
+    }
+    p:last-child{
+        @apply text-[20px];
+    }
+    .wrapper{
+        @apply flex justify-center items-center text-[20px];
+        span:first-child svg{
+            @apply fill-grey mr-[12px];
+        }
+    }
+}
