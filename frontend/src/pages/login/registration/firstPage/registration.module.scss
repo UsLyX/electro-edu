@@ -19,41 +19,6 @@
         }
         .another{
             @apply w-[70%] ml-[70px];
-            .another__header{
-                @apply flex text-grey items-center mb-[25px];
-                hr{
-                    @apply grow h-[1.6px] bg-grey;
-                }
-                span{
-                    @apply grow-0 mx-[12px];
-                }
-            }
-            .btns{
-                @apply flex justify-between mb-[50px];
-                .btn__mailru{
-                    @apply flex w-[45%] py-[10px] justify-center items-center rounded-main border-[#C5CFD3] 
-                           border-[1px] text-[#94A3B8] duration-300;
-                    &:hover{
-                        @apply bg-[#005FF9] text-white border-[#005FF9];
-                    }
-                    *:first-child{
-                        @apply mr-[8px];
-                    }
-                }
-                .btn__vk{
-                    @apply flex w-[45%] py-[10px] justify-center items-center rounded-main border-[#C5CFD3] 
-                           border-[1px] text-[#94A3B8] duration-300;
-                    &:hover{
-                        @apply bg-[#0077FF] text-white border-[#0077FF];
-                        *:first-child{
-                            @apply fill-white
-                        }
-                    }
-                    *:first-child{
-                        @apply mr-[8px];
-                    }
-                }
-            }
             .link__text{
                 @apply text-center font-medium text-base;
                 .link{

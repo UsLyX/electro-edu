@@ -1,0 +1,57 @@
+.wrapper{
+    @apply px-[100px] py-[70px];
+    .title{
+        @apply font-mon font-semibold text-[30px] text-second mb-[15px];
+    }
+    .subtitle{
+        @apply font-mon font-medium text-[20px] text-grey mb-[50px];
+    }
+    .files{
+        @apply font-rubik mb-[50px];
+        .files__title{
+            @apply text-second mb-[10px];
+        }
+        .files__subtitle{
+            @apply text-[14px] text-grey mb-[20px];
+        }
+        .download__container{
+            @apply flex;
+            .download{
+                @apply flex items-center mr-[20px] last:mr-0 px-[12px] py-[10px] bg-white drop-shadow-main rounded-main
+                       hover:text-main;
+                &:hover .link__img{
+                    @apply fill-main;
+                }       
+                .link__img{
+                    @apply mr-[10px] h-[16px] w-[16px];
+                }
+            }
+        }
+    }
+    .info__container{
+        .info__title{
+            @apply font-mon text-main font-semibold text-[24px] mb-[30px];
+        }
+        .info__score_box{
+            @apply flex font-mon text-[18px] text-second mb-[20px];
+            p:first-child{
+                @apply w-[170px] font-semibold;
+            }
+        }
+        .info__files_box{
+            @apply flex font-mon text-[18px] text-second mb-[20px];
+            p:first-child{
+                @apply w-[170px] font-semibold;
+            }
+            .select{
+                @apply w-[500px];
+            }
+        }
+        .info__date_box{
+            @apply flex font-mon text-[18px] text-second mb-[20px];
+            p:first-child{
+                @apply w-[170px] font-semibold;
+            }
+        }
+    }
+}

@@ -3,6 +3,7 @@ import { Link, Outlet, useLocation } from 'react-router-dom'
 import { AuthContext } from '../../context/authContext'
 import { toast } from 'react-toastify'
 import { useContext, useEffect, useState } from 'react'
+import { PredmetsProvider } from '../../context/predmetsContext';
 
 import userPhoto from '../../assets/userPhoto.png'
 import { ReactComponent as ExitIcon} from '../../assets/exit.svg'
@@ -17,7 +18,7 @@ const Student = () => {
     setUrl(window.location.href.split('/'))
   }, [location])
 
-  const { exit, user } = useContext(AuthContext)
+  const { exit, user, setToken } = useContext(AuthContext)
 
   const exitFunc = () => {
     exit();
@@ -37,7 +38,7 @@ const Student = () => {
                 <nav className={style.nav}>
                     <Link to="/student/personalAccount" className={`${style.link} ${url.includes('personalAccount') && style.active}`}>Личный кабинет</Link>
                     <Link to="/student/predmets" className={`${style.link} ${url.includes('predmets') && style.active}`}>Мои предметы</Link>
-                    <Link to="/student/score" className={`${style.link} ${url.includes('score') && style.active}`}>Мои оценки</Link>
+                    <Link to="/student/scores" className={`${style.link} ${url.includes('scores') && style.active}`}>Мои оценки</Link>
                     <Link to="/student/class" className={`${style.link} ${url.includes('class') && style.active}`}>Мой класс</Link>
                     <Link to="/student/teachers" className={`${style.link} ${url.includes('teachers') && style.active}`}>Учителя</Link>
                 </nav>
@@ -45,9 +46,11 @@ const Student = () => {
             <Link to="/authorization" onClick={exitFunc} className={style.exit}><ExitIcon /> Выйти</Link> 
         </div>
       </div>
-      <div style={{flex: 1, marginLeft: '285px'}}>
-        <Outlet />
-      </div>
+      <PredmetsProvider>
+        <div style={{flex: 1, marginLeft: '285px'}}>
+          <Outlet />
+        </div>
+      </PredmetsProvider>
     </div>
   )
 }

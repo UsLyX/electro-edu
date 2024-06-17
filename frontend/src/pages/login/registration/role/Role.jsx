@@ -59,7 +59,7 @@ const Role = () => {
       <div className={style.banner}>
         <div className={style.phone__box}>
           <Phone />
-          <span className={style.phone}>+7 (900) 999-99-99</span>
+          <span className={style.phone}>+7 (800) 200-01-22</span>
         </div>
         <div className={style.banner__main}>
           <img src={banner2} className={style.banner__img} />

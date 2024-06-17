@@ -1,0 +1,76 @@
+.wrapper{
+    @apply px-[100px] py-[70px];
+    .title{
+        @apply font-mon font-semibold text-[30px] text-second mb-[15px];
+    }
+    .class, .count__students{
+        @apply font-mon font-semibold text-[20px] text-grey mb-[15px];
+    }
+    .count__students{
+        @apply mb-[50px];
+    }
+    .category{
+        @apply font-rubik font-medium text-main flex mb-[20px];
+        p:first-child{
+            @apply w-[25%];
+        }
+        p:nth-child(2){
+            @apply w-[45%];
+        }
+        p:nth-child(3){
+            @apply w-[15%] text-center;
+        }
+        p:last-child{
+            @apply w-[15%] text-center;
+        }
+    }
+    .students{
+        @apply font-rubik font-medium text-[16px];
+        .student{
+            @apply flex items-center mb-[20px];
+            .student__name{
+                @apply text-second w-[25%] text-[20px];
+            }
+            .student__scores{
+                @apply flex w-[45%] flex-wrap;     
+                .no__score{
+                    @apply text-second;
+                }
+                div{
+                    @apply inline-block relative;
+                    .score{
+                        @apply bg-main text-white px-[4px] py-[3px] mr-[7px] rounded-main last:mr-0;
+                    }
+                    .tooltiptext{
+                        @apply text-[10px] invisible w-[150px] bg-main text-white text-center rounded-main py-[5px] absolute z-[1] bottom-[125%]
+                               left-[50%] ml-[-75px] opacity-0 duration-300
+                    }
+                    .tooltiptext::after{
+                        @apply content-[""] absolute top-[100%] left-[50%] ml-[-5px] border-[5px] border-main border-t-main border-l-transparent border-r-transparent border-b-transparent;
+                    }
+                    &:hover .tooltiptext {
+                        @apply visible opacity-100;
+                      }
+                    .yellow{
+                        @apply bg-[#FFCD42];
+                    }
+                    .red{
+                        @apply bg-[#FF1F00];
+                    }
+                }  
+            }
+            .middle__score__box{
+                @apply w-[15%] text-center;
+                .middle__score{
+                    @apply inline bg-main text-white px-[5px] py-[3px] rounded-main;
+                }
+            }
+            .score__result__box{
+                @apply w-[15%] text-center;
+                .score__result{
+                    @apply inline bg-main text-white px-[4px] py-[3px] rounded-main;
+                }
+            }
+        }
+    }
+}    

@@ -1,0 +1,43 @@
+.wrapper{
+    @apply px-[100px] py-[70px];
+    .title{
+        @apply font-mon font-semibold text-[30px] text-second mb-[15px];
+    }
+    .subtitle{
+        @apply font-mon font-medium text-[20px] text-grey mb-[50px];
+    }
+    .files{
+        @apply font-rubik mb-[50px];
+        .files__title{
+            @apply text-second mb-[10px];
+        }
+        .files__subtitle{
+            @apply text-[14px] text-grey mb-[20px];
+        }
+        .download__container{
+            @apply flex;
+            .download{
+                @apply flex items-center mr-[20px] last:mr-0 px-[12px] py-[10px] bg-white drop-shadow-main rounded-main
+                       hover:text-main;
+                &:hover .link__img{
+                    @apply fill-main;
+                }       
+                .link__img{
+                    @apply mr-[10px] h-[16px] w-[16px];
+                }
+            }
+        }
+    }
+    .files__label{
+        @apply font-mon text-main text-[12px] mb-[5px];
+    }
+    .files__box{
+        @apply py-[35px] mb-[50px] cursor-pointer flex flex-col justify-around items-center border-main border-dashed border-[2px] rounded-main;
+        .file__img{
+            @apply w-min mb-[40px] fill-main;
+        }
+        input[type=file]::file-selector-button {
+            @apply mr-[20px] border-none bg-main rounded-main text-white cursor-pointer py-[10px] px-[25px];
+        }
+    }
+}

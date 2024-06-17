@@ -27,7 +27,7 @@ const TeacherPersonalAccont = () => {
       await axios.patch(`${process.env.REACT_APP_API_URL}/user/update`, data)
       .then(res => {
         setChange(null)
-        setUser(currentUser)
+        setUser({...user, ...change})
         toast.success(res.data.message)
       })
       .catch(res => toast.error(res.response.data.message))

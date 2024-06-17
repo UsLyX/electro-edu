@@ -1,0 +1,28 @@
+.wrapper{
+    @apply px-[100px] py-[70px];
+    .title{
+        @apply font-mon font-semibold text-[30px] text-second mb-[15px];
+    }
+    .class{
+        @apply font-mon font-semibold text-[20px] text-grey mb-[50px];
+    }
+    .quest__description{
+        @apply mb-[50px];
+    }
+    .files__label{
+        @apply font-mon text-main text-[12px] mb-[5px];
+    }
+    .files__box{
+        @apply py-[35px] mb-[50px] cursor-pointer flex flex-col justify-around items-center border-main border-dashed border-[2px] rounded-main;
+        .file__img{
+            @apply w-min mb-[40px] fill-main;
+        }
+        input[type=file]::file-selector-button {
+            @apply mr-[20px] border-none bg-main rounded-main text-white cursor-pointer py-[10px] px-[25px];
+        }
+    }
+    .btn__add{
+        @apply text-center border-[1px] border-main rounded-main py-[12px] w-full text-main font-mon font-medium 
+             hover:text-white hover:bg-main duration-200;
+    }
+}    

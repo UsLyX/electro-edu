@@ -27,8 +27,12 @@ class adminController {
 
   async getStatements(req, res) {
     try {
-      const statementsStudent = await prisma.student.findMany();
-      const statementsTeacher = await prisma.teacher.findMany();
+      const statementsStudent = await prisma.student.findMany({
+        orderBy: { id: 'desc' }
+      });
+      const statementsTeacher = await prisma.teacher.findMany({
+        orderBy: { id: 'desc' }
+      });
       const teachPredmets = await prisma.teacherLesson.findMany({
         where: {
           teacherID: { in: statementsTeacher.map((item) => item.id) },

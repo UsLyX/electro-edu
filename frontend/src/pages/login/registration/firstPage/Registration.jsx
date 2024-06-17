@@ -41,21 +41,6 @@ const Registration = () => {
           </ButtonFullsize>
         </form>
         <div className={style.another}>
-          <div className={style.another__header}>
-            <hr />
-            <span>Другие способы регистрации</span>
-            <hr />
-          </div>
-          <div className={style.btns}>
-            <button className={style.btn__mailru}>
-              <Mailru />
-              <span>Mail.ru</span>
-            </button>
-            <button className={style.btn__vk}>
-              <Vk />
-              <span>Вконтакте</span>
-            </button>
-          </div>
           <p className={style.link__text}>
             Уже есть аккаунт?{" "}
             <Link to="/authorization" className={style.link}>
@@ -67,7 +52,7 @@ const Registration = () => {
       <div className={style.banner}>
         <div className={style.phone__box}>
           <Phone />
-          <span className={style.phone}>+7 (900) 999-99-99</span>
+          <span className={style.phone}>+7 (800) 200-01-22</span>
         </div>
         <div className={style.banner__main}>
           <img src={banner1} className={style.banner__img} />

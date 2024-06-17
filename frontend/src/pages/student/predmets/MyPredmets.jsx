@@ -1,14 +1,17 @@
 import React, { useContext, useEffect, useState } from 'react'
 import style from './myPredmets.module.scss'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../../context/authContext'
+import { PredmetsContext } from '../../../context/predmetsContext'
 import axios from 'axios'
 
 const MyPredmets = () => {
+  const navigete = useNavigate()
 
   const { user } = useContext(AuthContext)
+  const { predmets, setClassId } = useContext(PredmetsContext)
 
-  const [predmets, setPredmets] = useState()
+  const [currentPredmets, setCurrentPredmets] = useState()
 
   const getPredmets = async (studentClass) => {
     const data = {
@@ -16,19 +19,26 @@ const MyPredmets = () => {
     }
     await axios.post(`${process.env.REACT_APP_API_URL}/student/predmets`, data)
     .then(res => {
-      setPredmets(res.data)
+      setCurrentPredmets(res.data)
     })
     .catch(e => console.log(e))
   }
 
+  const changeUrl = (e) => {
+    const predmet = e.target.offsetParent.childNodes[0].innerHTML;
+    const selectPredmet = predmets.ClassLessons.find(item => item.lessonName === predmet)
+    navigete(`${selectPredmet.id}/questions`)
+  }
+
   useEffect(() => {
+    setClassId(user.classId)
     getPredmets(user.classId)
   }, [])
 
   return (
     <div className={style.wrapper}>
       <h1 className={style.title}>Мои предметы</h1>
-      {predmets && predmets.ClassLessons.length ? 
+      {currentPredmets && currentPredmets.ClassLessons.length ? 
         (
           <>
             <div className={style.category}>
@@ -36,13 +46,13 @@ const MyPredmets = () => {
               <p>Текущая оценка</p>
             </div>
             <div className={style.predmets}>
-            {predmets.ClassLessons.map((predmet, index) => {
+            {currentPredmets.ClassLessons.map((predmet, index) => {
               return (
                 <div className={style.predmet} key={index}>
                   <p className={style.predmet__name}>{predmet.lessonName}</p>
                   <p className={style.predmet__score}>5</p>
                   <div className={style.btn__container}>
-                    <Link className={style.questions__btn}>Задания</Link>
+                    <button onClick={changeUrl} className={style.questions__btn}>Задания</button>
                   </div>
                 </div>
               )

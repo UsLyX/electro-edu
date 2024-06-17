@@ -21,7 +21,7 @@ const SchoolClasses = () => {
         <GridButton number="9" path="/teacher/journal/predmets/9" className={style.button}></GridButton>
         <GridButton number="10" path="/teacher/journal/predmets/10" className={style.button}></GridButton>
         <GridButton number="11" path="/teacher/journal/predmets/11" className={style.button}></GridButton>
-        <GridButton svg={<BackIcon />} path="/admin" className={style.button}>Назад</GridButton>
+        <GridButton svg={<BackIcon />} path="/teacher" className={style.button}>Назад</GridButton>
       </div>
     </div>
   )

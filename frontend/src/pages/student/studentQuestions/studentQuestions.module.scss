@@ -1,0 +1,38 @@
+.wrapper{
+    @apply py-[70px] px-[100px];
+    .title{
+        @apply font-mon font-semibold text-[30px] text-second mb-[50px];
+    }
+    .category{
+        @apply font-rubik font-medium text-main flex px-[20px] mb-[10px];
+        p:first-child{
+            @apply w-1/2;
+        }
+        p:nth-child(2){
+            @apply w-[15%] text-center;
+        }
+        p:last-child{
+            @apply w-[15%] text-center;
+        }
+    }
+    .questions{
+        .question{
+            @apply mb-[20px] flex items-center rounded-main border-[1px] border-main py-[25px] font-rubik px-[20px];
+            .quest__description{
+              @apply text-second text-[20px] font-medium w-1/2;
+            }
+            .quest__date{
+                @apply text-grey w-[15%] text-center;
+            }
+            .quest__files{
+                @apply text-grey w-[15%] text-center;
+            }
+            .btn__view{
+                @apply flex-1 text-center bg-lgrey text-grey py-[9px] rounded-main hover:text-white hover:bg-main duration-200;
+            }
+        }
+    }
+    .not__found{
+        @apply font-mon font-semibold text-[20px] text-second mb-[15px];
+    }
+}

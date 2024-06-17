@@ -4,6 +4,7 @@ const cors = require('cors')
 const userRouter = require('./routers/userRouter')
 const adminRouter = require('./routers/adminRouter')
 const studentRouter = require('./routers/studentRouter')
+const teacherRouter = require('./routers/teacherRouter')
 
 const app = express()
 
@@ -15,6 +16,7 @@ app.use(express.json())
 app.use('/user', userRouter)
 app.use('/admin', adminRouter)
 app.use('/student', studentRouter)
+app.use('/teacher', teacherRouter)
 
 const start = () => {
     try {

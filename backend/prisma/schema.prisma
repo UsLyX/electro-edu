@@ -20,6 +20,7 @@ model Student {
   dateRegister DateTime   @default(now())
   classId      Int
   status       userStatus @default(PROCESSING)
+  Answer       Answer[]
 }
 
 model Teacher {
@@ -60,12 +61,22 @@ model Class {
 }
 
 model ClassLessons {
-  class      Class  @relation(fields: [classId], references: [id])
+  id         Int        @id @default(autoincrement())
+  class      Class      @relation(fields: [classId], references: [id])
   classId    Int
-  lesson     Lesson @relation(fields: [lessonName], references: [lessonName])
+  lesson     Lesson     @relation(fields: [lessonName], references: [lessonName], onDelete: Cascade)
   lessonName String
+  questions  Question[]
+}
 
-  @@id([classId, lessonName])
+model Question {
+  id                  Int          @id @default(autoincrement())
+  classLesson         ClassLessons @relation(fields: [classLessonId], references: [id], onDelete: Cascade)
+  classLessonId       Int
+  questionDescription String
+  dateCreate          DateTime     @default(now())
+  files               String[]
+  answers             Answer[]
 }
 
 model Admin {
@@ -75,8 +86,27 @@ model Admin {
   password String
 }
 
+model Answer {
+  id         Int          @id @default(autoincrement())
+  Question   Question    @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  questionId Int
+  student    Student      @relation(fields: [studentId], references: [id])
+  studentId  Int
+  files      String[]
+  score      studentScore @default(NOSCORE)
+  dateAnswer DateTime     @default(now())
+}
+
 enum userStatus {
   ACCEPTED
   REJECTED
   PROCESSING
+}
+
+enum studentScore {
+  PERFECT
+  GOOD
+  SATISFACTORY
+  BAD
+  NOSCORE
 }

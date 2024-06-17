@@ -14,7 +14,7 @@ import {ReactComponent as Book}  from '../../../assets/bookIcon.svg'
 
 const PersonalAccount = () => {
 
-  const { user, setUser } = useContext(AuthContext)
+  const { user, setUser, login } = useContext(AuthContext)
 
   const [currentUser, setCurrentUser] = useState(user)
   const [change, setChange] = useState()
@@ -28,7 +28,7 @@ const PersonalAccount = () => {
       await axios.patch(`${process.env.REACT_APP_API_URL}/user/update`, data)
       .then(res => {
         setChange(null)
-        setUser(currentUser)
+        setUser({...user, ...change})
         toast.success(res.data.message)
       })
       .catch(res => toast.error(res.response.data.message))
@@ -45,6 +45,7 @@ const PersonalAccount = () => {
     return validateDate;
   }
 
+  
   return (
     <div className={style.wrapper}>
       <h1 className={style.title}>Личный кабинет</h1>

@@ -1,0 +1,26 @@
+.wrapper{
+    @apply px-[100px] py-[70px];
+    .title{
+        @apply font-mon font-semibold text-[30px] text-second mb-[15px];
+    }
+    .class{
+        @apply font-mon font-semibold text-[20px] text-grey mb-[50px];
+    }
+    .categoty{
+        @apply px-[20px] text-main font-rubik font-medium mb-[15px];
+    }
+    .predmets{
+        .predmet{
+            @apply mb-[30px] flex justify-between items-center rounded-main bg-white border-[1px] border-[#C5CFD3] duration-200 hover:border-main hover:drop-shadow-main px-[20px] py-[20px];
+            p{
+                @apply font-mon font-medium text-[20px] text-second;
+            }
+            .link__btn{
+                @apply bg-lgrey text-grey px-[30px] py-[7px] duration-300 rounded-main first:mr-[20px] hover:bg-main hover:text-white;
+            }
+        }
+    }
+    .not__found{
+        @apply font-mon font-semibold text-[20px] text-second mb-[15px]
+    }
+}    

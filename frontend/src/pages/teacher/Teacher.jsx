@@ -3,6 +3,7 @@ import style from './teacher.module.scss'
 import { AuthContext } from '../../context/authContext'
 import { useLocation, Link, Outlet } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { PredmetsProvider } from '../../context/predmetsContext';
 
 import userPhoto from '../../assets/userPhoto.png'
 import { ReactComponent as ExitIcon} from '../../assets/exit.svg'
@@ -42,9 +43,11 @@ const Teacher = () => {
           <Link to="/authorization" onClick={exitFunc} className={style.exit}><ExitIcon /> Выйти</Link> 
       </div>
     </div>
-    <div style={{flex: 1, marginLeft: '285px'}}>
-      <Outlet />
-    </div>
+    <PredmetsProvider>
+      <div style={{flex: 1, marginLeft: '285px'}}>
+        <Outlet />
+      </div>
+    </PredmetsProvider>
   </div>
   )
 }

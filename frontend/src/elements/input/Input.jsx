@@ -3,7 +3,7 @@ import InputMask from 'react-input-mask'
 import style from './input.module.scss'
 
 
-const Input = ({type, placeholder, label, svg, className, onChange, value, min, readOnly}) => {
+const Input = ({type, placeholder, label, svg, className, onChange, value, min, readOnly, multiple, defaultValue}) => {
   return( 
     <div className={`${style.wrapper} ${className}`}>
       {type == 'tel' ?
@@ -33,7 +33,7 @@ const Input = ({type, placeholder, label, svg, className, onChange, value, min, 
         <>
           <label className={style.label} htmlFor={`input ${label}`}>{label}</label>
           <div className={style.input_wrapper}>
-            <input minLength={min} defaultValue={value} className={style.input} id={`input ${label}`} onChange={onChange} type={type} placeholder={placeholder} readOnly={readOnly} required/>
+            <input multiple={multiple} minLength={min} defaultValue={defaultValue} value={value} className={style.input} id={`input ${label}`} onChange={onChange} type={type} placeholder={placeholder} readOnly={readOnly} required/>
             <div className={style.svg}>{svg}</div>
           </div>
         </>
