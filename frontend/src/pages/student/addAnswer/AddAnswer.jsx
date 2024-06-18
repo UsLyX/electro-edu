@@ -79,11 +79,7 @@ const AddAnswer = () => {
     await axios.post(`${process.env.REACT_APP_API_URL}/student/addAnswer`, data)
     .then(res => {
         toast.success(res.data.message)
-        return new Promise(function (resolve, reject) {  
-            setTimeout(resolve, 3000); 
-        })
     })
-    .then(() => window.location.href = `/student/predmets/${params.id}/questions`)
     .catch(e => console.log(e))
   }
 

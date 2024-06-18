@@ -107,11 +107,7 @@ const ViewQuestion = () => {
     .then(res => {
         console.log(res)
         toast.success(res.data.message)
-        return new Promise((resolve, reject) => {
-          setTimeout(resolve, 3500)
-        })
     })
-    .then( _ => window.location.reload())
     .catch(e => console.log(e))
   }
 
