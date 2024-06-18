@@ -78,7 +78,7 @@ const MyScores = () => {
               <div className={style.predmet__scores}>
                 {predmet.questions.length > 0 ? predmet.questions.map((question, index) => {
                   const answer = question.answers.find(answer => answer.studentId == user.id);
-                  return answer && answer.score == 'PERFECT' ? 
+                  answer !== undefined ? answer.score == 'PERFECT' ? 
                   (<p className={`${style.score}`} key={index}>
                     5
                     <span className={style.tooltiptext}>Ответ за {validateDate(answer.dateAnswer)}</span>
@@ -99,7 +99,7 @@ const MyScores = () => {
                   (<p className={`${style.score} ${style.red}`} key={index}>
                     2
                     <span className={style.tooltiptext}>Ответ за {validateDate(answer.dateAnswer)}</span>
-                  </p>)
+                  </p>) : <></>
                 })
                 :
                 (
