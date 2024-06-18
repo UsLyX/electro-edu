@@ -15,7 +15,7 @@ const Routers = () => {
         <Routes key={'routes'}>
           <Route path="/" key={'main_route'} element={list[0].component}>
             {token && user ? 
-              user.role == 'Ученик' ? list[0].childs.filter(item => item.isAuth == true && item.student == true).map((route, index) => {
+              user.role === 'Ученик' ? list[0].childs.filter(item => item.isAuth === true && item.student === true).map((route, index) => {
                 return (
                   <>  
                       <Route key={`navigate ${index}`} index element={<Navigate to={route.path} key={`nav ${index}`} replace/>} />
@@ -34,7 +34,7 @@ const Routers = () => {
                 )
               })
               :
-              user.role == 'Учитель' ? list[0].childs.filter(item => item.isAuth == true && item.teacher == true).map((route, index) => {
+              user.role === 'Учитель' ? list[0].childs.filter(item => item.isAuth === true && item.teacher === true).map((route, index) => {
                 return (
                   <>  
                       <Route key={`navigate ${index}`} index element={<Navigate to={route.path} key={`nav ${index}`} replace/>} />
@@ -55,7 +55,7 @@ const Routers = () => {
                 )
               })
               :
-              user.role == 'Администратор' && list[0].childs.filter(item => item.isAuth == true && item.admin == true).map((route, index) => {
+              user.role === 'Администратор' && list[0].childs.filter(item => item.isAuth === true && item.admin === true).map((route, index) => {
                 return (
                   <>  
                       <Route key={`navigate ${index}`} index element={<Navigate to={route.path} key={`nav ${index}`} replace/>} />
@@ -72,8 +72,13 @@ const Routers = () => {
                 )
               })
             :
-            list[0].childs.filter(item => item.isAuth == false).map((route, index) => {
-              return <Route key={index} path={route.path} element={route.component}/>
+            list[0].childs.filter(item => item.isAuth === false).map((route, index) => {
+              return (
+                <>
+                  <Route key={`navigate ${index}`} index element={<Navigate to={route.path} key={`nav ${index}`} replace/>} />
+                  <Route key={`route ${route.path}`} path={route.path} element={route.component}/>
+                </>
+              )
             })}
           </Route>
           <Route path="*" element={list.find(item => item.notFound).component} />
