@@ -36,19 +36,21 @@ const MyScores = () => {
       const arr = []
       questions.map(question => {
         const answer = question.answers.find(answer => answer.studentId == user.id)
-        switch (answer.score) {
-          case 'PERFECT':
-            arr.push(5)
-            break;
-          case 'GOOD':
-            arr.push(4)
-            break;
-          case 'SATISFACTORY':
-            arr.push(3)
-            break;
-          case 'BAD':
-            arr.push(2)
-            break;
+        if(answer) {
+          switch (answer.score) {
+            case 'PERFECT':
+              arr.push(5)
+              break;
+            case 'GOOD':
+              arr.push(4)
+              break;
+            case 'SATISFACTORY':
+              arr.push(3)
+              break;
+            case 'BAD':
+              arr.push(2)
+              break;
+          }
         }
       })
       return arr.reduce((acc, item) => acc + item, 0) / arr.length;

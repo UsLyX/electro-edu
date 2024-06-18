@@ -29,6 +29,7 @@ const Authorization = () => {
     await axios.post(`${process.env.REACT_APP_API_URL}/user/login`, data)
     .then(res => {
       localStorage.setItem('token', res.data.token)
+      login(res.data.token)
       toast.success(res.data.message)
       switch (res.data.role) {
         case 'Администратор':
