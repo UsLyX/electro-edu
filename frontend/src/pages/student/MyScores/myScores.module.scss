@@ -6,12 +6,9 @@
     .category{
         @apply font-rubik font-medium text-main flex mb-[20px];
         p:first-child{
-            @apply w-[25%];
+            @apply w-[70%];
         }
         p:nth-child(2){
-            @apply w-[45%];
-        }
-        p:nth-child(3){
             @apply w-[15%] text-center;
         }
         p:last-child{
