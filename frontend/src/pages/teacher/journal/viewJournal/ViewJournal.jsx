@@ -151,7 +151,7 @@ const ViewJournal = () => {
               <div className={style.middle__score__box}>
                 {currentLesson && noScore(currentLesson.questions, student.id) && (
                   <p className={style.middle__score}>
-                    {middleScore(currentLesson.questions, student.id).toFixed(2)}
+                    {middleScore(currentLesson.questions, student.id)}
                   </p>
                 )}
               </div>

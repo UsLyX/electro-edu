@@ -66,7 +66,7 @@ const MyScores = () => {
       <h1 className={style.title}>Мои Оценки</h1>
       <div className={style.category}>
         <p>Название предмета</p>
-        <p>Оценки</p>
+        {/* <p>Оценки</p> */}
         <p>Ср. балл</p>
         <p>Итог</p>
       </div>
@@ -109,7 +109,7 @@ const MyScores = () => {
               <div className={style.middle__score__box}>
                 {predmet.questions.length > 0 && (
                   <p className={style.middle__score}>
-                    {middleScore(predmet.questions).toFixed(2)}
+                    {middleScore(predmet.questions)}
                   </p>
                 )}
               </div>
