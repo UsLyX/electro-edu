@@ -43,17 +43,13 @@ const MyPredmets = () => {
           <>
             <div className={style.category}>
               <p>Название предмета</p>
-              <p>Текущая оценка</p>
             </div>
             <div className={style.predmets}>
             {currentPredmets.ClassLessons.map((predmet, index) => {
               return (
                 <div className={style.predmet} key={index}>
                   <p className={style.predmet__name}>{predmet.lessonName}</p>
-                  <p className={style.predmet__score}>5</p>
-                  <div className={style.btn__container}>
-                    <button onClick={changeUrl} className={style.questions__btn}>Задания</button>
-                  </div>
+                  <button onClick={changeUrl} className={style.questions__btn}>Задания</button>
                 </div>
               )
             })}
